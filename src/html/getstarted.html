@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started with Smash Hit Modding</title>
+  <link href="../styles/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Get Started with Smash Hit Modding</h1>
+    <div class="alert">While modding is not officially supported through an in-game editor or SDK, the original developers at Mediocre AB have expressed that they are comfortable with the modding community, provided that mods do not give away paid content (such as the Premium unlock) for free. This permissive stance has allowed a thriving community to emerge.</div>
+    <div class="alert">
+      <strong>Recommended Version:</strong> v1.4.3 is considered the optimal version of Smash Hit for modding. This is the last version developed by Mediocre AB themselves. Versions 1.5.0 and later were developed by a different organization and introduced changes that make them less suitable for modding. Always source v1.4.3 for your modding base.
+    </div>
+    <h2>Required Tools</h2>
+    <p>Before you begin modding, you will need to set up a collection of community-built tools. The table below summarizes each tool, its purpose, and key notes.</p>
+    <table>
+      <tr>
+        <th>Tool</th>
+        <th>Purpose</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td>Blender</td>
+        <td>3D modeling software; hosts the Shatter addon</td>
+        <td>Free, open-source. Required for segment editing. Download from blender.org.</td>
+      </tr>
+      <tr>
+        <td>Shatter</td>
+        <td>Blender addon for creating and editing segments</td>
+        <td>Primary level editor by knot126. Supports boxes, obstacles, decals, power-ups, water. Exports XML + LitMesh. Use v1.6.5+ for Blender 4.2+, or v1.5.14 for older Blender. Available on Codeberg and GameBanana.</td>
+      </tr>
+      <tr>
+        <td>APK Editor Studio</td>
+        <td>Decompile, edit, repack, sign, and install APKs</td>
+        <td>Essential for injecting modified assets into the game APK. Handles signing and optimization. Available for Windows and Linux.</td>
+      </tr>
+      <tr>
+        <td>Notepad++</td>
+        <td>Advanced text editor</td>
+        <td>For hand-editing XML checkpoint files, Lua room scripts, and other text assets.</td>
+      </tr>
+    </table>
+    <h2>The Directory Structure</h2>
+    <p>Below is the overall file structure inside the Smash Hit APK's <code>assets/</code> directory:</p>
+<pre>assets/
+├── levels/              ← Checkpoint XML files
+│   ├── intro.xml.mp3
+│   ├── night.xml.mp3
+│   └── ...
+├── rooms/               ← Room Lua scripts
+│   ├── intro/
+│   │   ├── part1.lua.mp3
+│   │   └── part2.lua.mp3
+│   └── night/
+│       ├── part1.lua.mp3
+│       └── ...
+├── segments/            ← Segment XML + mesh files
+│   ├── basic.xml.mp3
+│   ├── basic.mesh.mp3
+│   └── ...
+├── obstacles/           ← Obstacle Lua scripts
+│   ├── scoretop.lua.mp3
+│   └── ...
+├── game.xml.mp3         ← Levels in order
+└── templates.xml.mp3    ← Template definitions</pre>
+    <div class="alert">
+      <strong>Why <code>.mp3</code> extensions?</strong> Smash Hit uses the <code>.mp3</code> extension on non-audio files (e.g., <code>.xml.mp3</code>, <code>.mesh.mp3</code>) as a convention. Android's asset compression system leaves <code>.mp3</code> files uncompressed, which allows the game to memory-map them efficiently. This is not actual MP3 audio data — it is simply an extension trick.
+    </div>
+  </div>
+</body>
+</html>
